@@ -1,0 +1,116 @@
+/* ==========================================================================
+   SportPulse MX — estilos personalizados
+   Paleta: verde azulado (turquesa) + coral para "en vivo". Tipografías: Barlow Condensed (títulos) y Source Sans 3 (texto).
+   ========================================================================== */
+
+/* ---------- 1. Variables de color (tema claro y oscuro) ---------- */
+:root{
+  --sp-ink:#1d4a48; --sp-turf:#1f7a70; --sp-accent:#175f57; --sp-live:#ffb4a8;
+  --sp-bg:#eefaf8; --sp-card:#ffffff; --sp-soft:#d8f3ef; --sp-line:#8fd6cc;
+  --sp-shadow:0 .75rem 1.5rem rgba(23,95,87,.18);
+  --bs-body-font-family:'Source Sans 3',system-ui,sans-serif;
+  --bs-primary:#1f7a70; --bs-primary-rgb:31,122,112; --bs-link-color:#1f7a70;
+}
+[data-bs-theme="dark"]{
+  --sp-bg:#0f2a2c; --sp-card:#173b3d; --sp-ink:#e3f7f3; --sp-turf:#7fd8cb; --sp-accent:#7fd8cb;
+  --sp-live:#ff9d8f; --sp-soft:#1d4547; --sp-line:#2f6a68; --sp-shadow:0 .75rem 1.5rem rgba(0,0,0,.4);
+}
+
+/* ---------- 2. Base ---------- */
+html{ scroll-behavior:smooth; }
+body{ background:var(--sp-bg); color:var(--sp-ink); }
+.btn-primary{ --bs-btn-bg:#1f7a70; --bs-btn-border-color:#1f7a70; --bs-btn-hover-bg:#175f57; --bs-btn-hover-border-color:#175f57; --bs-btn-active-bg:#134e48; --bs-btn-color:#fff; --bs-btn-hover-color:#fff; }
+.btn-outline-primary{ --bs-btn-color:var(--sp-accent); --bs-btn-border-color:var(--sp-turf); --bs-btn-hover-bg:#1f7a70; --bs-btn-hover-border-color:#1f7a70; --bs-btn-hover-color:#fff; }
+.skip-link{ position:absolute; left:.5rem; top:.5rem; z-index:2000; background:#fff; color:#12403c; padding:.5rem 1rem; }
+:focus-visible{ outline:3px solid var(--sp-turf); outline-offset:2px; }
+.sp-logo,.sp-title,.sp-h2,.sp-score{ font-family:'Barlow Condensed',sans-serif; font-weight:800; }
+.sp-title{ font-size:clamp(2rem,5vw,3.4rem); line-height:1.05; }
+.sp-h2{ font-size:1.9rem; margin:0; }
+.sp-score{ font-size:2.4rem; letter-spacing:.04em; }
+.bi,.fa-solid{ display:inline-block; min-width:1em; }
+
+/* ---------- 3. Header y menú de navegación ---------- */
+.sp-nav{ background:var(--sp-soft); border-bottom:3px solid var(--sp-line); }
+.sp-logo{ font-size:1.6rem; color:var(--sp-ink); }
+.sp-logo span{ color:var(--sp-accent); margin-left:.15rem; }
+.sp-logo i{ display:inline-block; transition:transform .4s; }
+.sp-logo:hover i{ transform:rotate(-20deg) scale(1.25); }
+.sp-nav .nav-link{ position:relative; color:var(--sp-ink); font-weight:600; transition:color .25s; }
+.sp-nav .nav-link::after{ content:""; position:absolute; left:.5rem; right:.5rem; bottom:.15rem; height:3px; border-radius:2px; background:var(--sp-turf); transform:scaleX(0); transition:transform .3s; }
+.sp-nav .nav-link:hover,.sp-nav .nav-link.active{ color:var(--sp-accent); }
+.sp-nav .nav-link:hover::after,.sp-nav .nav-link.active::after{ transform:scaleX(1); }
+[data-bs-theme="dark"] .navbar-toggler-icon{ filter:invert(1); }
+.sp-nav .form-control{ min-width:11rem; }
+
+/* ---------- 4. Cabeceras de página (hero) ---------- */
+.sp-hero{ background:linear-gradient(135deg,var(--sp-soft) 0%,var(--sp-bg) 70%); border-bottom:1px solid var(--sp-line); }
+.sp-hero .lead{ max-width:46ch; }
+.sp-hero-deco{ font-size:clamp(5rem,16vw,11rem); color:var(--sp-turf); opacity:.18; line-height:1; transition:transform .6s; }
+.sp-hero:hover .sp-hero-deco{ transform:rotate(12deg) scale(1.06); }
+
+/* ---------- 5. Tarjetas (con hover) ---------- */
+.sp-card{ display:block; color:var(--sp-ink); background:var(--sp-card); border:1px solid rgba(128,128,128,.25); border-radius:.75rem;
+  transition:transform .25s, box-shadow .25s, border-color .25s; }
+button.sp-card{ font:inherit; }                       /* los <button> no heredan color/fuente por defecto */
+.sp-card:hover,.sp-card:focus-visible{ transform:translateY(-5px); box-shadow:var(--sp-shadow); border-color:var(--sp-turf); }
+.carousel.sp-card:hover{ transform:none; }
+.card-news-media{ overflow:hidden; aspect-ratio:16/9; background:#cfd8e3; }
+.card-news-media img{ width:100%; height:100%; object-fit:cover; transition:transform .5s; }
+.card-news:hover .card-news-media img{ transform:scale(1.08); }
+.card-title{ transition:color .25s; }
+.card-news:hover .card-title{ color:var(--sp-accent); }
+.badge-dep{ background:var(--sp-soft); color:var(--sp-ink); border:1px solid var(--sp-line); }
+.sp-vacio{ background:var(--sp-card); border:2px dashed var(--sp-line); border-radius:.75rem; }
+
+/* ---------- 6. Botones de filtro por deporte ---------- */
+.bulma-button{ background:var(--sp-card); color:var(--sp-ink); border-color:var(--sp-line); transition:transform .2s, background-color .2s, box-shadow .2s; }
+.bulma-button:hover{ background:var(--sp-soft); color:var(--sp-ink); transform:translateY(-2px) scale(1.05); box-shadow:0 .3rem .6rem rgba(23,95,87,.2); }
+.bulma-button.is-active-sport{ background:#a8e6dc; color:#12403c; border-color:#6cc7b9; font-weight:600; }
+.bulma-buttons{ gap:.25rem; }
+.btn{ transition:transform .2s, background-color .2s, box-shadow .2s, color .2s; }
+.btn:hover{ transform:translateY(-2px); box-shadow:0 .3rem .6rem rgba(0,0,0,.15); }
+#btnTema{ transition:transform .4s, background-color .2s; }
+#btnTema:hover{ transform:rotate(25deg) scale(1.15); }
+
+/* ---------- 7. En vivo / resultados ---------- */
+.badge-live{ background:var(--sp-live); color:#4a1a14; animation:pulso 1.2s infinite; }
+@keyframes pulso{ 50%{ opacity:.45; } }
+
+/* ---------- 8. Carrusel ---------- */
+.car-img{ aspect-ratio:16/9; object-fit:cover; background:#6cc7b9; max-height:480px; }
+.car-caption{ position:absolute; left:0; right:0; bottom:0; padding:3rem 4rem 2.5rem 1.25rem; color:#12403c;
+  background:linear-gradient(transparent,rgba(232,249,246,.97) 55%); }
+@media (max-width:575px){ .car-caption{ position:static; background:var(--sp-soft); color:var(--sp-ink); padding:1rem 1rem 2.5rem; } }
+
+/* ---------- 9. Listas, acordeón y tablas ---------- */
+.item-hover{ transition:background-color .25s, padding-left .25s; }
+.item-hover:hover{ background-color:var(--sp-soft) !important; padding-left:1.5rem; }
+.agenda-hora{ min-width:4rem; }
+.accordion-item{ background:var(--sp-card); }
+.accordion-button:not(.collapsed){ background:var(--sp-soft); color:var(--sp-ink); }
+.table{ --bs-table-bg:transparent; }
+
+/* ---------- 10. Reproductor "Gol de la semana" ---------- */
+.gol-video{ position:relative; border:0; padding:0; background:#000; cursor:pointer; }
+.gol-video img{ width:100%; height:100%; object-fit:cover; opacity:.85; transition:opacity .3s, transform .4s; }
+.gol-video:hover img{ opacity:1; transform:scale(1.05); }
+.gol-play{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:3.5rem; height:3.5rem;
+  border-radius:50%; background:rgba(255,255,255,.9); color:#12403c; display:grid; place-items:center; font-size:1.2rem; transition:transform .25s; }
+.gol-video:hover .gol-play{ transform:translate(-50%,-50%) scale(1.2); }
+
+/* ---------- 11. Footer ---------- */
+.sp-footer{ background:var(--sp-soft); color:var(--sp-ink); border-top:3px solid var(--sp-line); }
+.sp-footer a{ color:var(--sp-ink); text-decoration:none; transition:color .2s, padding-left .2s; }
+.sp-footer a:hover{ color:var(--sp-accent); text-decoration:underline; padding-left:.25rem; }
+
+/* ---------- 12. Animación de aparición ---------- */
+.js .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; transition-delay:calc(var(--d,0) * 80ms); }
+.js .reveal.in{ opacity:1; transform:none; }
+
+/* Quien prefiere menos movimiento: sin animaciones */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+  .js .reveal{ opacity:1; transform:none; }
+}
+.js .reveal.item-hover{ transition:opacity .6s ease, transform .6s ease, background-color .25s, padding-left .25s;
+  transition-delay:calc(var(--d,0) * 80ms), calc(var(--d,0) * 80ms), 0s, 0s; }

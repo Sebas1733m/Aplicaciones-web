@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Fútbol americano">
+  <rect width="1280" height="720" fill="#1f7a70"/>
+  <g stroke="#ffffff" stroke-opacity=".35" stroke-width="6"><path d="M0 180h1280M0 360h1280M0 540h1280"/></g>
+  <g transform="rotate(-25 640 360)">
+    <ellipse cx="640" cy="360" rx="250" ry="140" fill="#8a4b2d" stroke="#ffffff" stroke-width="8"/>
+    <path d="M440 360h400" stroke="#ffffff" stroke-width="8"/>
+    <g stroke="#ffffff" stroke-width="8"><path d="M570 330v60M620 325v70M670 325v70M720 330v60"/></g>
+    <path d="M410 340q-18 20 0 40M870 340q18 20 0 40" fill="none" stroke="#ffffff" stroke-width="8"/>
+  </g>
+</svg>
