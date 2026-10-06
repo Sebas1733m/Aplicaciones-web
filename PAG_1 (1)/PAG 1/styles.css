@@ -1,0 +1,53 @@
+:root{
+  --sp-ink:#1d4a48; --sp-turf:#1f7a70; --sp-live:#ffb4a8; --sp-bg:#eefaf8; --sp-card:#ffffff; --sp-soft:#d8f3ef;
+  --bs-body-font-family:'Source Sans 3',system-ui,sans-serif;
+  --bs-primary:#1f7a70; --bs-primary-rgb:31,122,112; --bs-link-color:#1f7a70;
+}
+[data-bs-theme="dark"]{ --sp-bg:#0f2a2c; --sp-card:#173b3d; --sp-ink:#e3f7f3; --sp-turf:#7fd8cb; --sp-live:#ff9d8f; --sp-soft:#1d4547; }
+.btn-primary{ --bs-btn-bg:#1f7a70; --bs-btn-border-color:#1f7a70; --bs-btn-hover-bg:#175f57; --bs-btn-hover-border-color:#175f57; --bs-btn-color:#fff; }
+.btn-outline-primary{ --bs-btn-color:#1f7a70; --bs-btn-border-color:#1f7a70; --bs-btn-hover-bg:#1f7a70; --bs-btn-hover-border-color:#1f7a70; }
+body{ background:var(--sp-bg); color:var(--sp-ink); }
+.skip-link{ position:absolute; left:.5rem; top:.5rem; z-index:2000; background:#fff; padding:.5rem 1rem; }
+
+.sp-nav{ background:var(--sp-soft); border-bottom:3px solid #8fd6cc; }
+.sp-logo,.sp-title,.sp-h2,.sp-score{ font-family:'Barlow Condensed',sans-serif; font-weight:800; }
+.sp-logo{ font-size:1.6rem; color:var(--sp-ink); }
+.sp-logo span{ color:var(--sp-turf); margin-left:.15rem; }
+.sp-title{ font-size:clamp(2rem,5vw,3.4rem); line-height:1.05; max-width:20ch; }
+.sp-h2{ font-size:1.9rem; margin:0; }
+
+.sp-card{ background:var(--sp-card); border:1px solid rgba(128,128,128,.25); border-radius:.75rem; }
+.sp-score{ font-size:2.4rem; letter-spacing:.04em; }
+
+.badge-live{ background:var(--sp-live); color:#4a1a14; animation:pulso 1.2s infinite; }
+@keyframes pulso{ 50%{ opacity:.45; } }
+@media (prefers-reduced-motion:reduce){ .badge-live{ animation:none; } }
+
+.news-img{ aspect-ratio:16/9; object-fit:cover; width:100%; border-radius:.75rem .75rem 0 0; background:#cfd8e3; }
+.card-title a{ color:inherit; text-decoration:none; }
+:focus-visible{ outline:3px solid var(--sp-turf); outline-offset:2px; }
+.sp-footer{ background:var(--sp-soft); color:var(--sp-ink); }
+.bulma-button{ background:var(--sp-card); color:var(--sp-ink); }
+.bulma-button.is-active-sport{ background:#a8e6dc; color:#12403c; border-color:#6cc7b9; font-weight:600; }
+
+/* Carrusel */
+.car-img{ aspect-ratio:16/9; object-fit:cover; background:#6cc7b9; max-height:480px; }
+.car-caption{ position:absolute; left:0; right:0; bottom:0; padding:3rem 4rem 2.5rem 1.25rem; color:#12403c;
+  background:linear-gradient(transparent,rgba(232,249,246,.97) 55%); }
+@media (max-width:575px){ .car-caption{ position:static; background:var(--sp-soft); color:var(--sp-ink); padding:1rem 1rem 2.5rem; } }
+
+/* Reservar espacio para contenido que se genera con JS (evita saltos) */
+#filtroDeportes{ min-height:2.5rem; }
+#gridVivo{ min-height:600px; }
+@media (min-width:768px){ #gridVivo{ min-height:300px; } }
+@media (min-width:992px){ #gridVivo{ min-height:150px; } }
+#zonaCarrusel{ min-height:clamp(200px,52vw,480px); }
+@media (min-width:992px){ #gridGoles{ min-height:270px; } }
+.bi,.fa-solid{ display:inline-block; min-width:1em; }
+
+/* Reproductor ligero de "Gol de la semana" */
+.gol-video{ position:relative; border:0; padding:0; background:#000; cursor:pointer; }
+.gol-video img{ width:100%; height:100%; object-fit:cover; opacity:.85; }
+.gol-video:hover img{ opacity:1; }
+.gol-play{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:3.5rem; height:3.5rem;
+  border-radius:50%; background:rgba(255,255,255,.9); color:#12403c; display:grid; place-items:center; font-size:1.4rem; }
